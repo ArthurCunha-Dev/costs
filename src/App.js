@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './components/pages/Home';
 import Company from './components/pages/Company';
@@ -7,10 +8,14 @@ import NewProject from './components/pages/NewProject';
 function App() {
   return (
     <Router>
-      <ul>
+      <div>
+      <Link to="/">Home</Link>
+      <Link to="/contact">Contato</Link>
+      <Link to="/company">Empresa</Link>
+      <Link to="/newproject">Novo Projeto</Link>
         <li>Home</li>
         <li>Contato</li>
-      </ul>
+      </div>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/company" element={<Company />} />

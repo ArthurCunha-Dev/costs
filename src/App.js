@@ -19,14 +19,13 @@ function App() {
         <Link to="/cadastrar">Cadastrar</Link>        
 
       </div>
-
+      
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/company" element={<Company />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/newproject" element={<NewProject />} />
         <Route path='/cadastrar' element={<Cadastrar/>} />
-
       </Routes>
       <p>Footer</p>
     </Router>

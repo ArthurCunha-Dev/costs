@@ -5,26 +5,26 @@ import logo from '../../img/logo.png';
 
 function Navbar() {
   return (
-    <nav className={styles.navbar}>
+    <nav className={styles.navbar} aria-label="Navegação principal">
       <Container>
         <Link to="/">
           <img 
             src={logo} 
-            alt="Costs" 
-            style={{ width: '50px', height: '50px' }} 
+            alt="Logo Costs" 
+            className={styles.logo}
           />
         </Link>
         <ul className={styles.list}>
-           <li class={styles.item}> 
+          <li className={styles.item}>
             <Link to="/">Home</Link>
           </li>
-           <li class={styles.item}> 
+          <li className={styles.item}> 
             <Link to="/contact">Contato</Link>
           </li>
-           <li class={styles.item}> 
+          <li className={styles.item}> 
             <Link to="/company">Empresa</Link>
           </li>
-           <li class={styles.item}> 
+          <li className={styles.item}> 
             <Link to="/newproject">Novo Projeto</Link>
           </li>
         </ul>

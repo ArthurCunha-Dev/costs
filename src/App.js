@@ -5,11 +5,15 @@ import Company from './components/pages/Company';
 import Contact from './components/pages/Contact';
 import NewProject from './components/pages/NewProject';
 import Cadastrar from './components/pages/Cadastrar';
+import Container from './components/layout/Container';
+
+
 
 
 
 function App() {
   return (
+      
     <Router>
       <div>
         <Link to="/">Home</Link>
@@ -19,14 +23,16 @@ function App() {
         <Link to="/cadastrar">Cadastrar</Link>        
 
       </div>
+          <Container customClass='min-height'>
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/company" element={<Company />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/newproject" element={<NewProject />} />
+                <Route path='/cadastrar' element={<Cadastrar/>} />
+            </Routes>
+          </Container>
       
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/company" element={<Company />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/newproject" element={<NewProject />} />
-        <Route path='/cadastrar' element={<Cadastrar/>} />
-      </Routes>
       <p>Footer</p>
     </Router>
   );

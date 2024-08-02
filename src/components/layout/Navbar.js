@@ -8,8 +8,7 @@ function Navbar() {
     <nav className={styles.navbar} aria-label="Navegação principal">
       
         <Link to="/"><img src={logo} alt="Logo Costs" className={styles.logo}/></Link>
-       
-        <ul className={styles.list}>
+               <ul className={styles.list}>
           <li className={styles.item}> <Link to="/">Home</Link></li>
           <li className={styles.item}> <Link to="/projects">Projetos</Link></li>
           <li className={styles.item}> <Link to="/company">Empresa</Link></li>

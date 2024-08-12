@@ -6,7 +6,8 @@ function NewProject() {
     return (
         <div className={styles.newproject_container}>
             <h1>New Project</h1>
-            <p>Crie seu projeto para depois adicionar serviços</p>
+            <p>Crie seu projeto para depois adicionar<p/></p> 
+            <p>serviços</p>
             <ProjectForm />
         </div>
     );

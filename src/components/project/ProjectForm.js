@@ -1,5 +1,7 @@
-import Select from '../form/Select';
+
 import Input from '../layout/form/Input';
+import Select from '../layout/form/Select';
+import LinkButton from '../layout/LinkButton';
 
 import styles from './ProjectForm.module.css';
 
@@ -20,18 +22,16 @@ function ProjectForm() {
                     placeholder="Insira o orçamento total" 
                 />
             </div>
-            <div>
-                <select text="Categoria" name="Category_id">
-                    <option disabled>Selecione a categoria</option>
-                    {}
-                </select>
+            <div>               
+                <Select                
+                  text="Caregoria" 
+                  name="select"                
+                
+                /> 
             </div>
-            <Select />S
+            
             <div>
-                <Input 
-                    type="submit" 
-                    value="Criar Projeto" 
-                />
+              <LinkButton to="/project" text="Gravar" />               
             </div>
         </form>
     );

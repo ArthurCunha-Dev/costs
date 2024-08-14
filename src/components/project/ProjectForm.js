@@ -1,11 +1,23 @@
+import {useState} from 'react'
 
 import Input from '../layout/form/Input';
 import Select from '../layout/form/Select';
-import LinkButton from '../layout/LinkButton';
+import SubmitButton from '../layout/form/SubmitButton';
+
 
 import styles from './ProjectForm.module.css';
 
-function ProjectForm() {
+function ProjectForm({ btnText }) {
+    
+    const [categories,setCategories] = useState([])
+    
+fetch("http://localhost:5000/categorie",  {
+    method: "GET",
+    headers:{
+        'Content-Type': 'application/json'
+    }
+})
+
     return (
         <form className={styles.form}>
             <Input 
@@ -24,15 +36,11 @@ function ProjectForm() {
             </div>
             <div>               
                 <Select                
-                  text="Caregoria" 
-                  name="select"                
-                
+                    name="category_id" 
+                    text="Selecione a categoria"
                 /> 
             </div>
-            
-            <div>
-              <LinkButton to="/project" text="Gravar" />               
-            </div>
+            <SubmitButton text={btnText}/>
         </form>
     );
 }

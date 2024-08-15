@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 
 import Input from '../layout/form/Input';
 import Select from '../layout/form/Select';
@@ -11,12 +11,20 @@ function ProjectForm({ btnText }) {
     
     const [categories,setCategories] = useState([])
     
-fetch("http://localhost:5000/categorie",  {
-    method: "GET",
-    headers:{
-        'Content-Type': 'application/json'
-    }
-})
+useEffect(() =>{
+    fetch ("http://localhost:5000/categorie",  {
+        method: "GET",
+        headers:{
+            'Content-Type': 'application/json'
+        },
+    })
+    .then((resp) => resp.json())
+    .then((data)=> {
+       setCategories(data)
+    })
+    .catch((err) => console.log(err))
+
+}, [])
 
     return (
         <form className={styles.form}>
@@ -36,9 +44,9 @@ fetch("http://localhost:5000/categorie",  {
             </div>
             <div>               
                 <Select                
-                    name="category_id" 
+                    name="category_id"  
                     text="Selecione a categoria"
-                /> 
+                    options={categories}/> 
             </div>
             <SubmitButton text={btnText}/>
         </form>

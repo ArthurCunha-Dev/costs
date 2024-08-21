@@ -53,7 +53,7 @@ function ProjectForm({ handleSubmit, btnText, projectData }) {
             />
             <div>
                 <Input
-                    type="number"
+                    type="date"
                     text="Orçamento total"
                     name="budget"
                     placeholder="Insira o orçamento total"

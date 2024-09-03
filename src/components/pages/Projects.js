@@ -27,7 +27,7 @@ function Projects (){
         })
         .then((resp) => resp.json())
         .then((data) => {
-            console.log (data)
+            console.log (data.category)
             setProjects(data);
         })
         .catch((err) => console.log(err));
@@ -45,9 +45,9 @@ function Projects (){
           projects.map((project) => (
             <ProjectCard 
             id={project.id}
-            name={project.name}
-            budget={project.budget}
-            category={project.category}
+            name={project.name? project.name: 'Sem nome'}
+            budget={project.budget ? project.budget : ''}
+            category={project.category?.name || 'Categoria não disponível'}
             key={project.id}
             />
           ))}

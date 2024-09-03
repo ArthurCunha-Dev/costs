@@ -10,7 +10,7 @@ function ProjectCard({ id, name, budget, category, handleRemove }) {
             <button onClick={() => handleRemove(id)}><BsFillTrashFill /> Remover</button>
             <button><BsPencil /> Editar</button>
         </div>
-    );
+    ); 
 }
 
 export default ProjectCard;

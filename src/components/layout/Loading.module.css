@@ -9,3 +9,9 @@
 .loader {
     width: 50px;
 }
+
+.loader_container p {
+    font-size: 1.5em;
+    color: #f70c0c;
+}
+

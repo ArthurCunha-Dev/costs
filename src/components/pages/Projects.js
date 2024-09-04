@@ -37,21 +37,26 @@ function Projects (){
     <div className={styles.project_container}>
         <div className={styles.title_container}>
         <h1> Meus Projetos</h1>
-        <LinkButton to="/newproject" text="Criar Projeto" />
         </div>
         {message && <Message type="sucess" msg={message} />}
         <Container customClass="start">
-          {projects.length > 0 &&
-          projects.map((project) => (
-            <ProjectCard 
-            id={project.id}
-            name={project.name? project.name: 'Sem nome'}
-            budget={project.budget ? project.budget : ''}
-            category={project.category?.name || 'Categoria não disponível'}
-            key={project.id}
-            />
-          ))}
+            {projects.length === 0 ? (
+                <p>Não existem projetos cadastrados</p> // Mensagem exibida quando não há projetos
+            ) : (
+                projects.map((project) => (
+                    <ProjectCard 
+                        id={project.id}
+                        name={project.name || 'Sem nome'}
+                        budget={project.budget || ''}
+                        category={project.category?.name || 'Categoria não disponível'}
+                        key={project.id}
+                    />
+                ))
+            )}
         </Container>
+        <div className={styles.project_container}>
+          <LinkButton to="/newproject" text="Criar Projeto" />
+        </div>
     </div>
     )
         
@@ -59,3 +64,4 @@ function Projects (){
 }
 
 export default Projects;
+

@@ -1,21 +1,39 @@
+:root {
+    --primary-color: #222;
+    --secondary-color: #FB3;
+    --border-color: #7a7a7a7a;
+    --hover-bg-color: #222;
+    --hover-text-color: #FFBB33;
+    --infra-color: #FFAEBC;
+    --desenvolvimento-color: #A0E7E5;
+    --design-color: #B4F8C8;
+    --planejamento-color: #FBE7C6;
+    --border-color: #000; /* Defina a cor da borda para preto */
+}
+
+/* Estilo para os cartões individuais */
 .project_card {
-   padding: 1em;
-   border: 1px solid #7a7a7a7a;
-   border-radius: 5px;
-   width: 24%;
-   margin: 0.5%; 
+    padding: 1em;
+    border: 2px solid var(--border-color); /* Aumenta a largura da borda para 2px */
+    border-radius: 5px;
+    width: 100%; /* Ajusta a largura para se adaptar melhor ao contêiner */
+    max-width: 300px; /* Define uma largura máxima para manter os cartões compactos */
+    margin: 0.5%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box; /* Inclui padding e border no cálculo da largura */
 }
 
 .project_card h2 {
-    background-color: #222;
-    color: #fb3;
-    padding: .4em;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    padding: 0.4em;
     margin-bottom: 1.3em;
     font-size: 1.3em;
+    border-radius: 3px;
 }
 
 .project_card p {
-    color: #7a7a7a7a;
+    color: var(--primary-color);
     margin-bottom: 1em;
 }
 
@@ -25,19 +43,19 @@
 }
 
 .category_text .infra {
-    background-color: #FFAEBC;
+    background-color: var(--infra-color);
 }
 
 .category_text .desenvolvimento {
-    background-color: #A0E7E5;
+    background-color: var(--desenvolvimento-color);
 }
 
 .category_text .design {
-    background-color: #B4F8C8;
+    background-color: var(--design-color);
 }
 
 .category_text .planejamento {
-    background-color: #FBE7C6;
+    background-color: var(--planejamento-color);
 }
 
 .project_card_actions a,
@@ -45,24 +63,38 @@
     text-decoration: none;
     border: none;
     background-color: #FFF;
-    color: #222;
-    font-size: .9em;
-    padding:.6em 1em;
+    color: var(--primary-color);
+    font-size: 0.9em;
+    padding: 0.6em 1em;
     margin-right: 1em;
     cursor: pointer;
-    border: 1px solid #222;
+    border: 1px solid var(--primary-color);
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: 0.5s;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .project_card_actions .svg {
-    margin-right: .5em;
+    margin-right: 0.5em;
 }
 
 .project_card_actions a:hover,
-.project_card_actions button:hover {
-    background-color: #222;
-    color: #FFBB33;
+.project_card_card_actions button:hover {
+    background-color: var(--hover-bg-color);
+    color: var(--hover-text-color);
+}
+
+
+/* Ajustes para o layout em telas menores */
+@media (max-width: 768px) {
+    .project_card {
+        width: calc(50% - 1em); /* Dois cartões por linha em telas médias */
+    }
+}
+
+@media (max-width: 480px) {
+    .project_card {
+        width: calc(100% - 1em); /* Um cartão por linha em telas pequenas */
+    }
 }

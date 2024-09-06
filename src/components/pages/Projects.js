@@ -20,8 +20,8 @@ function Projects() {
     
 
     useEffect(() => {
-        setTimeout(
-            () =>{
+        // setTimeout(
+        //     () =>{
                 fetch("http://localhost:5000/projects", {
                     method: 'GET',
                     headers: {
@@ -39,24 +39,24 @@ function Projects() {
                 });
 
                 
-            }, 5000)
+            // }, 2000)
       
     }, [])
 
     function removeProject(id){
-        
-     fetch('http://localhost:5000/projects/${id}', {
-      method: 'DELETE',
-      headers: {
-       'Content-Type': 'application/json'
-       },
-     }).then(resp => resp.json())
-     .then(data => {
+        fetch(`http://localhost:5000/projects/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        }).then(resp => resp.json())
+        .then(data => {
         setProjects(projects.filter((project) => project.id !== id))
         setProjectMessage('Projeto removido com sucesso')
-     })
-     .catch(err => console.log(err))
-    }
+    })
+    .catch(err => console.log(err))
+    console.log(id)  
+}
 
     return (
         <div className={styles.project_container}>

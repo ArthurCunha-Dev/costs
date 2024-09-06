@@ -4,15 +4,20 @@ import Message from '../layout/Message';
 import Container from '../layout/Container';
 import LinkButton from '../layout/LinkButton';
 import ProjectCard from '../project/ProjectCard';
-import Loading from '../layout/Loading'; // Importação do componente Loading
+import Loading from '../layout/Loading'; 
 import styles from './Projects.module.css';
 
 function Projects() {
     const [projects, setProjects] = useState([]);
-    const [loading, setLoading] = useState(true); // Inicializa como true para mostrar o carregamento
+    const [loading, setLoading] = useState(true); 
+    const [projectMessage, setProjectMessage] = useState('')
 
     const location = useLocation();
-    const message = location.state?.message || ''; // Simplifica a obtenção da mensagem
+    let message = ''
+    if (location.state) {
+        message = location.state.message
+    }
+    
 
     useEffect(() => {
         setTimeout(
@@ -26,11 +31,11 @@ function Projects() {
                 .then((resp) => resp.json())
                 .then((data) => {
                     setProjects(data);
-                    setLoading(false); // Define loading como false após carregar os dados
+                    setLoading(false); 
                 })
                 .catch((err) => {
                     console.error(err);
-                    setLoading(false); // Define loading como false mesmo em caso de erro
+                    setLoading(false); 
                 });
 
                 
@@ -38,8 +43,20 @@ function Projects() {
       
     }, [])
 
-    
-
+    function removeProject(id){
+        
+     fetch('http://localhost:5000/projects/${id}', {
+      method: 'DELETE',
+      headers: {
+       'Content-Type': 'application/json'
+       },
+     }).then(resp => resp.json())
+     .then(data => {
+        setProjects(projects.filter((project) => project.id !== id))
+        setProjectMessage('Projeto removido com sucesso')
+     })
+     .catch(err => console.log(err))
+    }
 
     return (
         <div className={styles.project_container}>
@@ -47,11 +64,12 @@ function Projects() {
                 <h1>Meus Projetos</h1>
             </div>
             {message && <Message type="success" msg={message} />}
+            {projectMessage && <Message type="success" msg={projectMessage} />}
             <Container customClass="start">
                 {loading ? (
-                    <Loading /> // Exibe o componente Loading enquanto está carregando
+                    <Loading /> 
                 ) : projects.length === 0 ? (
-                    <p>Não existem projetos cadastrados</p> // Mensagem quando não há projetos
+                    <p>Não existem projetos cadastrados</p> 
                 ) : (
                     projects.map((project) => (
                         <ProjectCard 
@@ -60,6 +78,7 @@ function Projects() {
                             budget={project.budget || ''}
                             category={project.category?.name || 'Categoria não disponível'}
                             key={project.id}
+                            handleRemove={removeProject}
                         />
                     ))
                 )}

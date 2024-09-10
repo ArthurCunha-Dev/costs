@@ -2,7 +2,6 @@ import styles from './ProjectCard.module.css';
 import { BsPencil, BsFillTrashFill } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 import { FaEdit, FaTrash } from 'react-icons/fa'; // Importa os ícones
-import LinkButton from '../layout/LinkButton'
 
 function ProjectCard({ id, name, budget, category, handleRemove }) {
     const remove = (e) => {

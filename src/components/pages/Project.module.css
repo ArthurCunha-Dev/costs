@@ -1,0 +1,26 @@
+.porject_details {
+    padding: .2em;
+   
+}
+
+.project_details h1,
+.project_details h2,
+.project_details p {
+    margin-bottom: .5em;
+}
+
+.project_details h1 {
+    background-color: #222;
+    color:#FFBB33;
+    padding: 0.4em;
+}
+
+.project_details span {
+    font-weight: bold;
+}
+
+.details_container,
+.service_form_container {
+    margin-bottom: 1.2em;
+    padding-bottom: 1.2em;
+}

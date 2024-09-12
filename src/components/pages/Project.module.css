@@ -1,4 +1,4 @@
-.porject_details {
+.project_details {
     padding: .2em;
    
 }
@@ -23,4 +23,27 @@
 .service_form_container {
     margin-bottom: 1.2em;
     padding-bottom: 1.2em;
+    border-bottom: 1px solid #7a7a7a;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.btn {
+    background-color: #222;
+    color: #fff;
+    padding: 0,5em 1em ;
+    text-decoration: none;
+    transition: 0.5s;
+    cursor: pointer;
+    max-height: 40px;
+    border: none;
+}
+
+.btn:hover {
+    color: #ffbb33;
+}
+
+.project_info {
+    width: 100%;
 }

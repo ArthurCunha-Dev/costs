@@ -10,6 +10,7 @@ function Project() {
     const { id } = useParams();
     const [project, setProject] = useState({});
     const [showProjectForm, setShowProjectForm] = useState(false);
+    const [showServiceForm, setShowServiceForm] = useState(false);
     const [error, setError] = useState('');
     const [message, setMessage] = useState()
     const [type, setType] = useState()
@@ -65,6 +66,9 @@ function Project() {
     function toggleProjectForm() {
         setShowProjectForm(!showProjectForm);
     }
+    function toggleServiceForm() {
+        setShowServiceForm(!showServiceForm);
+    }
 
     return (
         <>
@@ -84,10 +88,10 @@ function Project() {
                                         <span>Categoria:</span> {project.category ? project.category.name : 'N/A'}
                                     </p>
                                     <p>
-                                        <span>Total de Orçamento:</span> {project.budget || 'N/A'}
+                                        <span>Total de Orçamento:</span> R${project.budget || '0'}
                                     </p>
                                     <p>
-                                        <span>Total utilizado:</span> {project.cost || 'N/A'}
+                                        <span>Total utilizado:</span> R${project.cost || '0'}
                                     </p>
                                 </div>
                             ) : (
@@ -99,6 +103,19 @@ function Project() {
                                     />
                                 </div>
                             )}
+                        </div>
+                        <div className={styles.service_form_container}>
+                            <h2>Adicione um serviço:</h2>
+                            <button className={styles.btn} onClick={toggleServiceForm}>
+                                {!showServiceForm ? 'Adicionar serviço' : 'Fechar'}
+                            </button>
+                            <div className={styles.project_info}>
+                                {showServiceForm && (<div>formulário do serviço</div>)}
+                            </div>
+                            <h2>Serviços</h2>
+                            <Container className="start">
+                                <p>Itens de serviços</p>
+                            </Container>
                         </div>
                     </Container>
                 </div>

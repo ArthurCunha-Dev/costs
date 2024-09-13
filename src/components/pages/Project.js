@@ -1,5 +1,5 @@
 import styles from './Project.module.css';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Loading from '../layout/Loading';
 import Container from '../layout/Container';
@@ -11,8 +11,9 @@ function Project() {
     const [project, setProject] = useState({});
     const [showProjectForm, setShowProjectForm] = useState(false);
     const [error, setError] = useState('');
-    const [message, setmessage] = useState()
+    const [message, setMessage] = useState()
     const [type, setType] = useState()
+    const navigate = useNavigate();
 
     useEffect(() => {
         setTimeout(() => {
@@ -29,7 +30,7 @@ function Project() {
                 console.log(err);
                 setError('Não foi possível carregar o projeto.');
             });
-        }, 3000);
+        }, 5000);
     }, [id]);
 
     function editPost(project) {
@@ -53,6 +54,7 @@ function Project() {
             setShowProjectForm(false)
             setMessage('Projeto atualizado!')
             setType('succes')
+            navigate(-1)
         })
         .catch(err => {
             console.log(err);
@@ -67,7 +69,7 @@ function Project() {
     return (
         <>
             {error && <p className={styles.error}>{error}</p>}
-            {project.name ? (
+            {project ? (
                 <div className={styles.project_details}>
                     <Container customClass="column">
                         {message && <Message type={type} msg={message} />}
